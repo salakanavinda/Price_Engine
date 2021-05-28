@@ -1,0 +1,23 @@
+<div class="row col-12 clearfix visible-xs container">
+  <div class="form-group col-lg-12 col-md-12 col-xs-12 float-left form-bx">
+    <label for="selectProducts">Select product</label>
+    <select class="form-control thick-option" id="selectProducts" (change)="onProductSelect($event)">
+      <option value=null>Select a product...</option>
+      <option *ngFor="let product of productList" value="{{product.id}}" >{{product.name}}</option>
+    </select>
+  </div>
+  <div>
+    <label>Carton :</label>
+    <label >
+      <input type="checkbox" (change)="onCartonSelect($event)">
+    </label>
+  </div>
+  <form (ngSubmit)="onQty()" [formGroup]="qtyForm">
+    <div class="form-group">
+      <input class="form-control" formControlName="qty" placeholder="Enter qty" type="number">
+    </div>
+  </form>
+</div>
+<div class="row col-12 justify-content-center calc-container" >
+  Cost : Rs. {{price | number : '1.2-2'}}
+</div>
